@@ -43,6 +43,10 @@ public class CabañaServicio {
         return Optional.ofNullable(cabañas.isEmpty() ? null : cabañas);
     }
 
+    public Optional<List<Cabaña>> buscar(){
+        return cabañaRepositorio.buscar();
+    }
+
 
 
 }
