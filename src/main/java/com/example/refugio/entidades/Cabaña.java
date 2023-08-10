@@ -3,30 +3,30 @@ package com.example.refugio.entidades;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Data
-@Table(name = "cabañas")
 public class Cabaña {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCabaña;
-    private int tamaño;
-    private LocalDateTime fechaHoraBajaCabaña;
 
-    @OneToMany (mappedBy = "cabaña")
-    private List<Reserva> reservas;
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long IDCabaña;
+    private int tamaño;
+    private LocalDate fechaHoraBajaCabaña;
 
     @ManyToOne
-    @JoinColumn (name = "IDTipoCabaña")
+    @JoinColumn (name = "IDTipocabaña")
     private TipoCabaña tipoCabaña;
 
-    @OneToMany (mappedBy = "cabaña")
-    private List<CabañaEstado> estados;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cabaña")
+    private List<CabañaEstado> estados = new ArrayList<>();
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cabaña")
+    private List<Reserva> reservas = new ArrayList<>();
 
 
 

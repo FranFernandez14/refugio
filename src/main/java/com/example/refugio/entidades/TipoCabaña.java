@@ -11,20 +11,15 @@ import java.util.List;
 public class TipoCabaña {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long IDTipoCabaña;
     private String nombre;
 
-    @OneToMany (mappedBy = "tipoCabaña")
-    private List<Cabaña> cabañas;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tipoCabaña")
+    private List<Cabaña> cabañas = new ArrayList<>();
 
-    @OneToMany (mappedBy = "tipoCabaña")
-    private List<CostoTipoCabaña> costos;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tipoCabaña")
+    private List<CostoTipoCabaña> costos = new ArrayList<>();
 
-    @ManyToMany
-    @JoinTable(name = "TipoCabaña_Caracteristica",
-            joinColumns = @JoinColumn(name = "IDTipoCabaña"),
-            inverseJoinColumns = @JoinColumn(name = "IDCaracteristica"))
-    private List<Caracteristica> caracteristicas = new ArrayList<>();
 
 }
