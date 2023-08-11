@@ -1,5 +1,6 @@
 package com.example.refugio.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,6 +35,7 @@ public class Usuario {
     private LocalDateTime fechaHoraBaja;
 
     @OneToMany(mappedBy = "usuario")
+    @JsonIgnoreProperties("usuario")
     private List<Reserva> reservas;
 
     @PrePersist

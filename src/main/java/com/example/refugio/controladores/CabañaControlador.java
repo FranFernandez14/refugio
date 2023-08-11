@@ -58,6 +58,10 @@ public class CabañaControlador {
 
         cabaña.setTipoCabaña(tipoCabaña);
 
+        tipoCabaña.getCabañas().add(cabaña);
+
+        tipoCabañaRepositorio.save(tipoCabaña);
+
         cabañaServicio.saveOrUpdate(cabaña);
         return new ResponseEntity<>("Cabaña creada correctamente", HttpStatus.OK);
     }

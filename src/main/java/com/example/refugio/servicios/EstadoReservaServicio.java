@@ -32,4 +32,5 @@ public class EstadoReservaServicio {
     public void delete (Long id){
         estadoReservaRepositorio.deleteById(id);
     }
+
 }

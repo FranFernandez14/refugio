@@ -1,5 +1,6 @@
 package com.example.refugio.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -16,6 +17,7 @@ public class TipoCabaña {
     private String nombre;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "tipoCabaña")
+    @JsonIgnoreProperties("tipoCabaña")
     private List<Cabaña> cabañas = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "tipoCabaña")

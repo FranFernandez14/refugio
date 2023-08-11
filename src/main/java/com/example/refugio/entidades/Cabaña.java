@@ -1,5 +1,7 @@
 package com.example.refugio.entidades;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -18,14 +20,16 @@ public class Cabaña {
     private int tamaño;
     private LocalDate fechaHoraBajaCabaña;
 
-    @ManyToOne
+    @ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn (name = "IDTipocabaña")
+    @JsonIgnoreProperties("cabañas")
     private TipoCabaña tipoCabaña;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "cabaña")
     private List<CabañaEstado> estados = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "cabaña")
+    @JsonIgnoreProperties("cabaña")
     private List<Reserva> reservas = new ArrayList<>();
 
 
