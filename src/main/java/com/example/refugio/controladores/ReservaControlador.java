@@ -73,7 +73,7 @@ public class ReservaControlador {
             if(((reservaDTO.getFechaInicio().isBefore(estado.getFechaFinCE()) && reservaDTO.getFechaInicio().isAfter(estado.getFechaInicioCE())) ||
                     (reservaDTO.getFechaFin().isBefore(estado.getFechaFinCE()) && reservaDTO.getFechaFin().isAfter(estado.getFechaInicioCE())) ||
                     (reservaDTO.getFechaInicio().isBefore(estado.getFechaInicioCE()) && reservaDTO.getFechaFin().isBefore(estado.getFechaFinCE()))||
-                    reservaDTO.equals(estado.getFechaInicioCE()))){
+                    reservaDTO.getFechaInicio().isEqual((estado.getFechaInicioCE())))){
                 return new ResponseEntity<>("Ya hay una reserva en esas fechas", HttpStatus.BAD_REQUEST);
             }
         }
