@@ -1,16 +1,27 @@
 package com.example.refugio.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.time.LocalDate;
 
 @Data
 public class ReservaDTO {
+    @JsonProperty("IDUsuario")
     private Long IDUsuario;
-    private Long IDCabaña;
-    private int cantPersonas;
-    private LocalDate fechaInicio;
-    private LocalDate fechaFin;
-    private float montoTotal;
 
+    @JsonProperty("IDCabaña")
+    private Long IDCabaña;
+
+    @JsonProperty("cantPersonas")
+    private int cantPersonas;
+
+    @JsonProperty("montoTotal")
+    private double montoTotal;
+
+    @JsonProperty("fechaInicio")
+    private LocalDate fechaInicio;
+
+    @JsonProperty("fechaFin")
+    private LocalDate fechaFin;
 }

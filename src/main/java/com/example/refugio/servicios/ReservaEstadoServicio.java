@@ -20,7 +20,7 @@ public class ReservaEstadoServicio {
         return reservaEstadoRepositorio.findAll();
     }
 
-    public Optional<ReservaEstado> getCabañaEstado(Long id){
+    public Optional<ReservaEstado> getReservaEstado(Long id){
         return reservaEstadoRepositorio.findById(id);
     }
 

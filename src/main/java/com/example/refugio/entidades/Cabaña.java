@@ -26,6 +26,7 @@ public class Cabaña {
     private TipoCabaña tipoCabaña;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "cabaña")
+    @JsonIgnoreProperties("cabaña")
     private List<CabañaEstado> estados = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "cabaña")

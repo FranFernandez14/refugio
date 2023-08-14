@@ -16,7 +16,7 @@ public class Reserva {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long idReserva;
     private int cantPersonas;
-    private float montoTotal;
+    private double montoTotal;
     private LocalDateTime fechaReserva;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;

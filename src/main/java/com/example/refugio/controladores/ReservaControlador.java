@@ -62,62 +62,67 @@ public class ReservaControlador {
     }
 
     @PostMapping ("/reservar")
-    public ResponseEntity<String> reservar(ReservaDTO reservaDTO){
-
-        if(reservaDTO.getCantPersonas() == cabañaServicio.getCabaña(reservaDTO.getIDCabaña()).get().getTamaño()){
-            return new ResponseEntity<>("La cabaña no admite tantas personas", HttpStatus.BAD_REQUEST);
-        }
-
-        List<CabañaEstado> estados = cabañaServicio.getCabaña(reservaDTO.getIDCabaña()).get().getEstados();
-        for (CabañaEstado estado: estados) {
-            if(((reservaDTO.getFechaInicio().isBefore(estado.getFechaFinCE()) && reservaDTO.getFechaInicio().isAfter(estado.getFechaInicioCE())) ||
-                    (reservaDTO.getFechaFin().isBefore(estado.getFechaFinCE()) && reservaDTO.getFechaFin().isAfter(estado.getFechaInicioCE())) ||
-                    (reservaDTO.getFechaInicio().isBefore(estado.getFechaInicioCE()) && reservaDTO.getFechaFin().isBefore(estado.getFechaFinCE()))||
-                    reservaDTO.getFechaInicio().isEqual((estado.getFechaInicioCE())))){
-                return new ResponseEntity<>("Ya hay una reserva en esas fechas", HttpStatus.BAD_REQUEST);
+    public ResponseEntity<String> reservar(@RequestBody ReservaDTO reservaDTO){
+        try{
+            if(reservaDTO.getCantPersonas() > cabañaServicio.getCabaña(reservaDTO.getIDCabaña()).get().getTamaño()){
+                return new ResponseEntity<>("La cabaña no admite tantas personas", HttpStatus.BAD_REQUEST);
             }
+
+            List<CabañaEstado> estados = cabañaServicio.getCabaña(reservaDTO.getIDCabaña()).get().getEstados();
+            for (CabañaEstado estado: estados) {
+                if(((reservaDTO.getFechaInicio().isBefore(estado.getFechaFinCE()) && reservaDTO.getFechaInicio().isAfter(estado.getFechaInicioCE())) ||
+                        (reservaDTO.getFechaFin().isBefore(estado.getFechaFinCE()) && reservaDTO.getFechaFin().isAfter(estado.getFechaInicioCE())) ||
+                        (reservaDTO.getFechaInicio().isBefore(estado.getFechaInicioCE()) && reservaDTO.getFechaFin().isBefore(estado.getFechaFinCE()))||
+                        reservaDTO.getFechaInicio().isEqual((estado.getFechaInicioCE())))){
+                    return new ResponseEntity<>("Ya hay una reserva en esas fechas", HttpStatus.BAD_REQUEST);
+                }
+            }
+
+            Reserva reserva = new Reserva();
+            reserva.setMontoTotal(reservaDTO.getMontoTotal());
+            reserva.setFechaInicio(reservaDTO.getFechaInicio());
+            reserva.setFechaFin(reservaDTO.getFechaFin());
+            reserva.setCantPersonas(reservaDTO.getCantPersonas());
+
+            Usuario usuario = usuarioServicio.getUsuario(reservaDTO.getIDUsuario()).get();
+
+            reserva.setUsuario(usuario);
+
+            Cabaña cabaña = cabañaServicio.getCabaña(reservaDTO.getIDCabaña()).get();
+            reserva.setCabaña(cabaña);
+
+            ReservaEstado reservaEstado = new ReservaEstado();
+            reservaEstado.setEstadoReserva(estadoReservaRepositorio.findByNombreER("Reservada").get());
+            reserva.setReservasEstado(Collections.singletonList(reservaEstado));
+
+            reserva.setFechaReserva(LocalDateTime.now());
+
+            reservaServicio.saveOrUpdate(reserva);
+
+            usuario.getReservas().add(reserva);
+            usuarioServicio.saveOrUpdate(usuario);
+
+            reservaEstado.setFechaInicioRE(LocalDateTime.now());
+            reservaEstado.setReserva(reserva);
+            reservaEstadoServicio.saveOrUpdate(reservaEstado);
+
+            cabaña.getReservas().add(reserva);
+
+            CabañaEstado cabañaEstado = new CabañaEstado();
+            cabañaEstado.setEstadoCabaña(estadoCabañaRepositorio.findByNombreEC("Ocupada").get());
+            cabañaEstado.setFechaInicioCE(reserva.getFechaInicio());
+            cabañaEstado.setFechaFinCE(reserva.getFechaFin());
+            cabañaEstado.setCabaña(cabaña);
+            cabaña.getEstados().add(cabañaEstado);
+            cabañaEstadoServicio.saveOrUpdate(cabañaEstado);
+
+            cabañaServicio.saveOrUpdate(cabaña);
+
+            return new ResponseEntity<>("Reserva realizada correctamente", HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<>(reservaDTO.toString() , HttpStatus.BAD_REQUEST);
         }
 
-        Reserva reserva = new Reserva();
-        reserva.setMontoTotal(reservaDTO.getMontoTotal());
-        reserva.setFechaInicio(reservaDTO.getFechaInicio());
-        reserva.setFechaFin(reservaDTO.getFechaFin());
-        reserva.setCantPersonas(reservaDTO.getCantPersonas());
-
-        Usuario usuario = usuarioServicio.getUsuario(reservaDTO.getIDUsuario()).get();
-
-        reserva.setUsuario(usuario);
-
-        Cabaña cabaña = cabañaServicio.getCabaña(reservaDTO.getIDCabaña()).get();
-        reserva.setCabaña(cabaña);
-
-        ReservaEstado reservaEstado = new ReservaEstado();
-        reservaEstado.setEstadoReserva(estadoReservaRepositorio.findByNombreER("Reservada").get());
-        reserva.setReservasEstado(Collections.singletonList(reservaEstado));
-
-        reserva.setFechaReserva(LocalDateTime.now());
-
-        reservaServicio.saveOrUpdate(reserva);
-
-        usuario.getReservas().add(reserva);
-        usuarioServicio.saveOrUpdate(usuario);
-
-        reservaEstado.setFechaInicioRE(LocalDateTime.now());
-        reservaEstadoServicio.saveOrUpdate(reservaEstado);
-
-        cabaña.getReservas().add(reserva);
-
-        CabañaEstado cabañaEstado = new CabañaEstado();
-        cabañaEstado.setEstadoCabaña(estadoCabañaRepositorio.findByNombreEC("Ocupada").get());
-        cabañaEstado.setFechaInicioCE(reserva.getFechaInicio());
-        cabañaEstado.setFechaFinCE(reserva.getFechaFin());
-        cabañaEstado.setCabaña(cabaña);
-        cabaña.getEstados().add(cabañaEstado);
-        cabañaEstadoServicio.saveOrUpdate(cabañaEstado);
-
-        cabañaServicio.saveOrUpdate(cabaña);
-
-        return new ResponseEntity<>("Reserva realizada correctamente", HttpStatus.OK);
     }
 
 
