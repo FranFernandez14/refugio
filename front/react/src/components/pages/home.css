@@ -1,0 +1,10 @@
+.home {
+    background-image: url('../../assets/homeBackground.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+    height: 100vh;
+    background-attachment: fixed;
+    position: relative;
+    top: -10vh;
+}

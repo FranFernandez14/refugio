@@ -1,0 +1,26 @@
+
+  
+
+  .registro-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .registro2{
+    background-color: white;
+    padding: 2vw;
+    position: relative;
+    top: -10vh;
+    height: 100vh;
+  }
+
+  .form-group{
+    width: 40vw;
+  }
+
+  .botones{
+    display: flex;
+    justify-content: center;
+  }

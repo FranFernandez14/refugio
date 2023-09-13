@@ -1,0 +1,43 @@
+.buscador{
+  align-items: center;
+  display: flex;
+  padding-top: 66vh;
+}
+
+.buscador2{
+  background-color: #333;
+  opacity: 0.8;
+  align-items: center;
+  display: flex;
+  height: 65px;
+  border-top-right-radius: 10px; /* Radio de esquina para la esquina derecha superior */
+  border-bottom-right-radius: 10px; /* Radio de esquina para la esquina derecha inferior */
+  overflow: hidden;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center;
+  
+}
+.button1{
+  margin-right: 0;
+  flex:1;
+  height:100%;
+  border-radius: 0 4px 4px 0;
+}
+
+.button2{
+  margin: 10px;
+}
+
+
+.fechas{
+  margin : 10px;
+}
+.personas{
+ padding: 10px;
+ height: 100%;
+ display: inline-flex;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
+
+}

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="064fbaac-672e-4d6d-bc33-dc5322fc0e7c" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2UBYaDYYcDZIH66KOkQQQfMNBVc" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Fran/Escritorio/refugio/back",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.general",
+    "spring.configuration.checksum": "9dad831bdb1b9257e5e56a1a40e601eb",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="RefugioApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="refugio" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.refugio.RefugioApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="064fbaac-672e-4d6d-bc33-dc5322fc0e7c" name="Changes" comment="" />
+      <created>1692414505975</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1692414505975</updated>
+      <workItem from="1692414506850" duration="1460000" />
+      <workItem from="1692827554624" duration="186000" />
+      <workItem from="1692840214746" duration="1146000" />
+      <workItem from="1692842279973" duration="820000" />
+      <workItem from="1693248772365" duration="685000" />
+      <workItem from="1693249811179" duration="1545000" />
+      <workItem from="1693261311216" duration="7965000" />
+      <workItem from="1693347422184" duration="411000" />
+      <workItem from="1693353208498" duration="711000" />
+      <workItem from="1693495661407" duration="4278000" />
+      <workItem from="1693579825252" duration="3979000" />
+      <workItem from="1693596793865" duration="25000" />
+      <workItem from="1693686587859" duration="645000" />
+      <workItem from="1693864629008" duration="9332000" />
+      <workItem from="1693935117309" duration="8257000" />
+      <workItem from="1694026571875" duration="2200000" />
+      <workItem from="1694040048205" duration="34000" />
+      <workItem from="1694046241443" duration="812000" />
+      <workItem from="1694099459374" duration="9464000" />
+      <workItem from="1694194983621" duration="1895000" />
+      <workItem from="1694209862022" duration="881000" />
+      <workItem from="1694210765505" duration="3536000" />
+      <workItem from="1694278623825" duration="501000" />
+      <workItem from="1694363275168" duration="3308000" />
+      <workItem from="1694387060120" duration="9729000" />
+      <workItem from="1694446044503" duration="2678000" />
+      <workItem from="1694452063256" duration="3136000" />
+      <workItem from="1694466474442" duration="985000" />
+      <workItem from="1694472764938" duration="6568000" />
+      <workItem from="1694529694710" duration="847000" />
+      <workItem from="1694548726893" duration="1272000" />
+      <workItem from="1694566270946" duration="3732000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
