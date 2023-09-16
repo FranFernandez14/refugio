@@ -1,17 +1,22 @@
 .navbar {
     display: flex;
     flex-direction: row;
-    position: fixed;
+    position: relative; /* Cambia esto según tus preferencias */
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 10vh;
-    background-color: #333; /* Color de fondo de la barra de navegación */
-    opacity: 0.9;
-    color: orange; /* Color de texto de la barra de navegación */
+    height: 9vh;
+    background-color: #9A3B3B; /* Color de fondo de la barra de navegación */
+    color: #F2ECBE;
     z-index: 1;
     list-style: none;
+    transition: background-color 0.3s; /* Agrega una transición suave para el cambio de color de fondo */
   }
+
+.navbar h2 {
+  color: #F2ECBE;
+
+}
   .botones{
     opacity : 1;
     display: flex;
@@ -72,6 +77,7 @@
     cursor: pointer;
     margin: 5px 0;
   }
-  
-  /* Estilos adicionales según tus preferencias */
-  
+  .navbar.scrolled {
+    background-color: #555; 
+    height: 6vh;
+  }

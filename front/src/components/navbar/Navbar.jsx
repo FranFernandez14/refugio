@@ -17,7 +17,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className='navbar'>
+    <div className="bg-menu navbar">
       <ul className='nav-link'>
         <li><h2>Refugio de montaña</h2></li>
       </ul>
